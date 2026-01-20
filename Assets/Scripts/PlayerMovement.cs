@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float groundChackCicrle;
 
+    public float jumpTime = 0.35f;
+    public float jumpTimeCounter;
+    private bool isJumping;
+    
     public float input;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,10 +27,31 @@ public class PlayerMovement : MonoBehaviour
     {
         input = Input.GetAxisRaw("Horizontal");
         grounded = Physics2D.OverlapCircle(feetPosition.position, groundChackCicrle, groundLayer);
-        if (grounded == true && Input.GetButton("Jump"))
+        if (grounded == true && Input.GetButtonDown("Jump"))
         {
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
             rb.linearVelocity = Vector2.up * jumpForce;
         }
+
+        if (Input.GetButtonDown("Jump") && isJumping == true)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                rb.linearVelocity = Vector2.up * jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        // if (Input.GetButtonUp("Jump"))
+        // {
+        //     isJumping = false;
+        // }
+        
     }
 
     void FixedUpdate()
