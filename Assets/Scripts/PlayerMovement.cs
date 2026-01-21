@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,17 +12,32 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float groundChackCicrle;
 
+    [SerializeField] private int health;
+
     public float jumpTime = 0.35f;
     public float jumpTimeCounter;
     private bool isJumping;
     
+    public GameObject attackPoint;
+    public LayerMask enemies;
+    public float radius = 4f;
+    private float damage;
+    
     public float input;
+    private Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        damage = 5f;
+    }
+    void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector2(input * spd, rb.linearVelocity.y);
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -51,11 +67,45 @@ public class PlayerMovement : MonoBehaviour
         // {
         //     isJumping = false;
         // }
-        
+        if(input >.1f)
+        {
+            anim.SetBool("isWalkingRight", true);
+        }
+        else
+        {
+            anim.SetBool("isWalkingRight", false);
+        }
+        if(input  < -.1f)
+        {
+            anim.SetBool("isWalkingLeft", true);
+        }
+        else
+        {
+            anim.SetBool("isWalkingLeft", false);
+        }
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            anim.SetBool("attackWhip",true);
+        }
     }
 
-    void FixedUpdate()
+
+    public void attack()
     {
-        rb.linearVelocity = new Vector2(input * spd, rb.linearVelocity.y);
+        Collider2D[] attack = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
+        foreach (Collider2D enemyGameobject in attack)
+        {
+            Debug.Log("Hit enemy");
+            enemyGameobject.GetComponent<EnemyHealth>().health -= damage;
+        }
+    }
+    public void endAttack()
+    {
+        anim.SetBool("attackWhip", false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
 }
