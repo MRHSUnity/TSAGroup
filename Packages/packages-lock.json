@@ -227,6 +227,7 @@
     },
     "com.unity.searcher": {
       "version": "4.9.3",
+<<<<<<< HEAD
       "depth": 2,
       "source": "registry",
       "dependencies": {},
@@ -234,6 +235,8 @@
     },
     "com.unity.settings-manager": {
       "version": "2.1.1",
+=======
+>>>>>>> parent of 4afd05e (tutorial)
       "depth": 2,
       "source": "registry",
       "dependencies": {},
