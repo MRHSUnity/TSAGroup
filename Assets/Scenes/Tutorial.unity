@@ -359,7 +359,7 @@ Transform:
   m_GameObject: {fileID: 356597502}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.56658, y: 2.4600022, z: -10}
+  m_LocalPosition: {x: 43.36, y: 5.71, z: -10}
   m_LocalScale: {x: 1.8800814, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3312,11 +3312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 1d9c585b205d79b40913a1a861d49f10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.88
+      value: 43.36
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 1d9c585b205d79b40913a1a861d49f10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.46
+      value: 5.71
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 1d9c585b205d79b40913a1a861d49f10, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7661,6 +7661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dracula idle 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 1a0e3211073114c4fae2a1a559f20ed0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 1a0e3211073114c4fae2a1a559f20ed0, type: 3}
       propertyPath: m_LocalScale.x
       value: 7
@@ -7798,7 +7802,7 @@ Transform:
   m_GameObject: {fileID: 1387853638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.88, y: 2.46, z: -10}
+  m_LocalPosition: {x: 43.36, y: 5.71, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

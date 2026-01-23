@@ -10,7 +10,8 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
     private Transform currentPoint;
     public float speed;
-    
+    float curhealth;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
         anim.SetBool("isWalking", true);
+        curhealth = health;
     }
 
     // Update is called once per frame
@@ -43,7 +45,12 @@ public class EnemyHealth : MonoBehaviour
             currentPoint = pointB.transform;
             
         }
-        if (health <= 0)
+        if (health < curhealth)
+        {
+            Debug.Log("Enemy hit");
+            curhealth = health;
+        }
+        if(health<=0)
         {
             Debug.Log("Enemy dead");
             Destroy(gameObject);
