@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float groundChackCicrle;
 
-    [SerializeField] private int health;
+    public float health;
 
     public float jumpTime = 0.35f;
     public float jumpTimeCounter;
@@ -26,12 +26,14 @@ public class PlayerMovement : MonoBehaviour
     public float input;
     private Animator anim;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         damage = 5f;
+        health = 10f;
     }
     void FixedUpdate()
     {
@@ -63,10 +65,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // if (Input.GetButtonUp("Jump"))
-        // {
-        //     isJumping = false;
-        // }
+        if (Input.GetButtonUp("Jump"))
+        {
+           isJumping = false;
+        }
         if(input >.1f)
         {
             anim.SetBool("isWalkingRight", true);
