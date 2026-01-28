@@ -12,7 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float groundChackCicrle;
 
-    public float health;
+    public HealthBarUI healthBarUI;
+    public float health, maxHealth;
+    public RectTransform healthBar;
+    
 
     public float jumpTime = 0.35f;
     public float jumpTimeCounter;
@@ -33,7 +36,14 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         damage = 5f;
-        health = 10f;
+        //health = 10f;
+
+        healthBarUI.setMaxHealth(maxHealth);
+    }
+    public void setHealth(float healthChange)
+    {
+        health += healthChange;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
     void FixedUpdate()
     {
@@ -43,6 +53,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (input.GetKeyDown("d"))
+        //{
+        //    setHealth(-2f);
+        //}
+        //if (input.GetKeyDown("u"))
+        //{
+        //    setHealth(2f);
+        //}
         input = Input.GetAxisRaw("Horizontal");
         grounded = Physics2D.OverlapCircle(feetPosition.position, groundChackCicrle, groundLayer);
         if (grounded == true && Input.GetButtonDown("Jump"))
