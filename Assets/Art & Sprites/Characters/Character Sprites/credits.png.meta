@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Character Sprites/credits.png.meta
+guid: d2a89d8b4c8d437429881c2ca154b105
+=======
 guid: a00fbe56c62ed7c4babc3e4667179f86
+>>>>>>> 95db55204f002ec53f7ca8c6b1710fcd8aef96f8:Assets/Art & Sprites/Characters/Character Sprites/credits.png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
