@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private bool grounded;
     public Transform feetPosition;
     public float groundChackCicrle;
-
+    public float gravity;
+    
     public HealthBarUI healthBarUI;
     public float health, maxHealth;
     public RectTransform healthBar;
@@ -63,24 +64,48 @@ public class PlayerController : MonoBehaviour
         //}
         input = Input.GetAxisRaw("Horizontal");
         grounded = Physics2D.OverlapCircle(feetPosition.position, groundChackCicrle, groundLayer);
-        if (grounded == true && Input.GetButtonDown("Jump"))
+            
+        // Jump start
+        if (grounded && Input.GetButtonDown("Jump"))
+        { 
+            isJumping = true; 
+            jumpTimeCounter = jumpTime; 
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
+            
+        // keep global gravity based on configured value
+        Physics2D.gravity = new Vector2(0, -gravity);
+            
+        // allow variable jump height while holding the button
+        if (Input.GetButton("Jump") && isJumping)
         {
-            isJumping = true;
-            jumpTimeCounter = jumpTime;
-            rb.linearVelocity = Vector2.up * jumpForce;
-        }
-
-        if (Input.GetButtonDown("Jump") && isJumping == true)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rb.linearVelocity = Vector2.up * jumpForce;
+            if (jumpTimeCounter > 0f)
+            { 
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
             {
                 isJumping = false;
             }
+        }
+            
+        if (Input.GetButtonUp("Jump"))
+        { 
+            isJumping = false;
+        }
+            
+            // heavier, snappier fall and lower hold gravity for short taps
+        float fallMultiplier = 5f;
+        float lowJumpMultiplier = 2f;
+            
+        if (rb.linearVelocity.y < 0f)
+        { 
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime);
+        }
+        else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
+        { 
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime);
         }
 
         if (Input.GetButtonUp("Jump"))
