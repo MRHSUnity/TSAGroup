@@ -7821,6 +7821,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751339471}
   m_CullTransparentMesh: 1
+--- !u!1 &799415327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+  m_PrefabInstance: {fileID: 593126497960471461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &799415334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799415327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee81fd10641f834d9699b8761afac93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
+  weapon: 0
 --- !u!1 &815014273
 GameObject:
   m_ObjectHideFlags: 0
@@ -8050,24 +8068,6 @@ MonoBehaviour:
   width: 0
   height: 0
   healthBar: {fileID: 6731436}
---- !u!1 &1162145925 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-  m_PrefabInstance: {fileID: 593126497960471461}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1162145926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162145925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee81fd10641f834d9699b8761afac93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
-  weapon: 0
 --- !u!1001 &1205323222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41668,37 +41668,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754020209}
   m_CullTransparentMesh: 1
---- !u!1 &1922717206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1922717207}
-  m_Layer: 0
-  m_Name: AttackPoint (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1922717207
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922717206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.295, y: 0.193, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 608806921}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978573698
 GameObject:
   m_ObjectHideFlags: 0
@@ -41899,14 +41868,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main idle 1
       objectReference: {fileID: 0}
+    - target: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3593635308365524919, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
       propertyPath: healthBarUI
       value: 
       objectReference: {fileID: 907950345}
-    - target: {fileID: 3593635308365524919, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: attackPointLeft
-      value: 
-      objectReference: {fileID: 1922717206}
     - target: {fileID: 4125152583593364165, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
       propertyPath: m_Size.x
       value: 0.4059343
@@ -41933,14 +41902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 371204234570490075, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1922717207}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
       insertIndex: 6
-      addedObject: {fileID: 1162145926}
+      addedObject: {fileID: 799415334}
   m_SourcePrefab: {fileID: 100100000, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
 --- !u!1001 &1377680080113956241
 PrefabInstance:

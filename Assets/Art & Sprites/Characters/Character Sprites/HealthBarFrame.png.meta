@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c8f4576e52e92740bf9799743fc86b1
+guid: 2a9fc576edcd9b64eb47ad63acbd6037
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8368968272502489006
-    second: whipbutbiggerui_0
+      213: -8584852880182027311
+    second: HealthBarFrame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: whipbutbiggerui_0
+      name: HealthBarFrame_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 13
-        width: 129
-        height: 132
+        x: 6
+        y: 4
+        width: 54
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25089f462b37bdb80800000000000000
-      internalID: -8368968272502489006
+      spriteID: 1dbd2cb3ac97cd880800000000000000
+      internalID: -8584852880182027311
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      whipbutbiggerui_0: -8368968272502489006
+      HealthBarFrame_0: -8584852880182027311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

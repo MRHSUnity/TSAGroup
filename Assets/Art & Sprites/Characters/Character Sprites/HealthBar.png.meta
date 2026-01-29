@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c6d4d2f6526e66d49b3df8857af9d2d1
+guid: a5b1eea42b61f154e89c2f6d0f845a47
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7281575583819089240
-    second: whip anim3_0
+      213: -8227546954408941770
+    second: HealthBar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: whip anim3_0
+      name: HealthBar_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 49
-        height: 48
+        x: 9
+        y: 6
+        width: 48
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 855c1bef96a5d0560800000000000000
-      internalID: 7281575583819089240
+      spriteID: 637ab99e2a1e1dd80800000000000000
+      internalID: -8227546954408941770
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      whip anim3_0: 7281575583819089240
+      HealthBar_0: -8227546954408941770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

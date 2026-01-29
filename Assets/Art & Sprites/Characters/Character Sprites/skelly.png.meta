@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 8eaf95951dde5c44283d7a6ee4ee226c
+guid: 9f963204f37eaf44ab47a4bc4ef6ff42
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4456960042610803090
-    second: whip_0
-  - first:
-      213: 6862504231833865357
-    second: whip_1
-  - first:
-      213: -5955932147524123104
-    second: whip_2
+      213: -1011880802010920795
+    second: skelly_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -106,67 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: whip_0
+      name: skelly_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 3
         y: 0
-        width: 18
+        width: 25
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6eb21a8472b522c0800000000000000
-      internalID: -4456960042610803090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: whip_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 35
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8c82106d338c3f50800000000000000
-      internalID: 6862504231833865357
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: whip_2
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 0
-        width: 51
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 026ce788447485da0800000000000000
-      internalID: -5955932147524123104
+      spriteID: 5a80a1195c315f1f0800000000000000
+      internalID: -1011880802010920795
       vertices: []
       indices: 
       edges: []
@@ -175,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 61d0cd5c44cae054e92aada848497fe5
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      whip_0: -4456960042610803090
-      whip_1: 6862504231833865357
-      whip_2: -5955932147524123104
+      skelly_0: -1011880802010920795
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

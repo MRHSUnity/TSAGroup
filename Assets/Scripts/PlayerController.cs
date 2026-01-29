@@ -1,9 +1,10 @@
 using System;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     public float spd;
     public float jumpForce;
@@ -21,10 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTimeCounter;
     private bool isJumping;
     
-    public GameObject attackPoint;
-    public LayerMask enemies;
-    public float radius = 4f;
-    private float damage;
+    
     
     public float input;
     private Animator anim;
@@ -35,10 +33,10 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        damage = 5f;
         //health = 10f;
-
+        
         healthBarUI.setMaxHealth(maxHealth);
+
     }
     public void setHealth(float healthChange)
     {
@@ -48,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(input * spd, rb.linearVelocity.y);
+
+        
         
     }
     // Update is called once per frame
@@ -103,29 +103,23 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isWalkingLeft", false);
         }
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            anim.SetBool("attackWhip",true);
-        }
+        // add facing left and right
+        
     }
 
 
-    public void attack()
-    {
-        Collider2D[] attack = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
-        foreach (Collider2D enemyGameobject in attack)
-        {
-            Debug.Log("Hit enemy");
-            enemyGameobject.GetComponent<EnemyHealth>().health -= damage;
-        }
-    }
-    public void endAttack()
-    {
-        anim.SetBool("attackWhip", false);
-    }
+    // public void attack()
+    // {
+    //     weaponController.attack();
+    // }
+    // public void endAttack()
+    // {
+    //     weaponController.endAttack();
+    // }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+        
+
     }
 }
