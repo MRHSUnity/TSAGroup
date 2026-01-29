@@ -38,12 +38,12 @@ public class EnemyHealth : MonoBehaviour
         if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
         {
             currentPoint = pointA.transform;
-            
+            flip();
         }
         if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
             currentPoint = pointB.transform;
-            
+            flip();
         }
         if (health < curhealth)
         {
