@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    public float health, maxHealth, width, height;
+    public float Health, MaxHealth, width, height;
 
     [SerializeField] private RectTransform healthBar;
 
-    public void setMaxHealth(float maxHealtha)
+    public void setMaxHealth(float maxHealth)
     {
-        maxHealth = maxHealtha;
+        MaxHealth = maxHealth;
     }
 
-    public void setHealth(float healtha)
+    public void setHealth(float health)
     {
-        health = healtha;
-        float newWidth = (health/maxHealth) * width;
+        Health = health;
+        float newWidth = (Health/MaxHealth) * width;
 
         healthBar.sizeDelta = new Vector2(newWidth, height);
     }
