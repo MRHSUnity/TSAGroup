@@ -4,28 +4,39 @@ public class EnemyAttack : MonoBehaviour
 {
     public float input;
     private GameObject attackArea;
+    private Animator anim;
+    private Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+    private float MoveDirection
+    {
+        get
+        {
+            float vx = rb.linearVelocity.x;
+            if (Mathf.Abs(vx) > 0.01f) return Mathf.Sign(vx);
+            float scaleX = transform.localScale.x;
+            return Mathf.Sign(scaleX == 0f ? 1f : scaleX);
+        }
     }
     public void enemyAttack()
     {
-        if (input > 0)
-        {
-            attackArea.transform.localPosition = new Vector3(.255f, attackArea.transform.localPosition.y, attackArea.transform.localPosition.z);
-        }
-        if (input<0)
-        {
-            attackArea.transform.localPosition = new Vector3(-.275f, attackArea.transform.localPosition.y, attackArea.transform.localPosition.z);
-        }
-       
         attackArea.SetActive(true);
-        
-        
+    }
+    public void endEnemyAttack()
+    {
+        attackArea.SetActive(false);
+        anim.SetBool("isAttacking",false);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;   
     }
     // Update is called once per frame
     void Update()
     {
-        input = Input.GetAxisRaw("Horizontal");
+        Vector3 pos = attackArea.transform.localPosition;
+        pos.x = Mathf.Abs(pos.x) * MoveDirection;
+        attackArea.transform.localPosition = pos;    
     }
 }

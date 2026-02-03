@@ -2,32 +2,32 @@ using UnityEngine;
 
 public class HealthUIPlayer : MonoBehaviour
 {
-    public float Health, MaxHealth, pastHealth;
+    public float health, MaxHealth, pastHealth;
 
     [SerializeField] private HealthBarUI healthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthBar.setMaxHealth(MaxHealth);
-        pastHealth = Health;
+        pastHealth = health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pastHealth>Health)
+        if (pastHealth>health)
         {
             
-            setHealh(Health-pastHealth);
-            pastHealth=Health;
+            setHealh(health-pastHealth);
+            pastHealth=health;
         }
         
     }
     public void setHealh(float healthChange)
     {
-        Health += healthChange;
-        Health = Mathf.Clamp(Health, 0, MaxHealth);
+        health += healthChange;
+        health = Mathf.Clamp(health, 0, MaxHealth);
 
-        healthBar.setHealth(Health);
+        healthBar.setHealth(health);
     }
 }
