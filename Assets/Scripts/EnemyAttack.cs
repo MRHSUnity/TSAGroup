@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float input;
-    private GameObject attackArea;
+    public GameObject attackArea;
     private Animator anim;
     private Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInParent(typeof(Animator)) as Animator;
         rb = GetComponent<Rigidbody2D>();
     }
     private float MoveDirection
@@ -26,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
     {
         attackArea.SetActive(true);
     }
+
     public void endEnemyAttack()
     {
         attackArea.SetActive(false);
