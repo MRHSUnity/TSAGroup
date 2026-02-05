@@ -35,8 +35,8 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = attackArea.transform.localPosition;
-        pos.x = Mathf.Abs(pos.x) * MoveDirection;
-        attackArea.transform.localPosition = pos;    
+        // Vector3 pos = attackArea.transform.localPosition;
+        // pos.x = Mathf.Abs(pos.x) * MoveDirection;
+        // attackArea.transform.localPosition = pos;    
     }
 }

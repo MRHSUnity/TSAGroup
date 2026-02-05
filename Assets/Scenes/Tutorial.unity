@@ -8047,9 +8047,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthBarUI
   Health: 0
   MaxHealth: 0
-  width: 0
-  height: 0
-  healthBar: {fileID: 6731436}
+  width: 208
+  height: 50
+  healthBar: {fileID: 907950342}
 --- !u!1 &1050631554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8059,8 +8059,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1050631555}
-  - component: {fileID: 1050631557}
   - component: {fileID: 1050631556}
+  - component: {fileID: 1050631557}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
@@ -8078,7 +8078,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.7671432, y: 0.21151184, z: 0}
-  m_LocalScale: {x: 0.8571428, y: 0.8604, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1786045255}
@@ -8100,9 +8100,8 @@ MonoBehaviour:
     m_Bits: 128
   anim: {fileID: 1786045257}
   rb: {fileID: 1786045258}
-  working: 0
---- !u!58 &1050631557
-CircleCollider2D:
+--- !u!70 &1050631557
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -8135,8 +8134,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.1301191, y: 0.12045355}
-  m_Radius: 0.16946198
+  m_Offset: {x: 1.1240548, y: 0.061537772}
+  m_Size: {x: 0.3283891, y: 0.21213211}
+  m_Direction: 1
 --- !u!1 &1162145925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
@@ -8155,6 +8155,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
   weapon: 0
+--- !u!114 &1162145927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162145925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b557646cf671e41a507d1da992b2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthUIPlayer
+  health: 10
+  MaxHealth: 10
+  healthBar: {fileID: 907950345}
 --- !u!1001 &1205323222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41528,8 +41543,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.1679252, y: 0.030401597}
-  m_Size: {x: 0.3751336, y: 0.283074}
+  m_Offset: {x: 1.124055, y: 0.06153777}
+  m_Size: {x: 0.3283891, y: 0.2121321}
   m_Direction: 1
 --- !u!4 &1523064332
 Transform:
@@ -42162,6 +42177,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
       insertIndex: 6
       addedObject: {fileID: 1162145926}
+    - targetCorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1162145927}
   m_SourcePrefab: {fileID: 100100000, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
 --- !u!1001 &1377680080113956241
 PrefabInstance:

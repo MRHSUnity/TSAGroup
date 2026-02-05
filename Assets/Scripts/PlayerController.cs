@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     public float groundChackCicrle;
     public float gravity;
     
-    public HealthBarUI healthBarUI;
-    public float health, maxHealth;
     public RectTransform healthBar;
     
 
@@ -36,13 +34,10 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         //health = 10f;
         
-        healthBarUI.setMaxHealth(maxHealth);
 
     }
     public void setHealth(float healthChange)
     {
-        health += healthChange;
-        health = Mathf.Clamp(health, 0, maxHealth);
     }
     void FixedUpdate()
     {

@@ -8,7 +8,6 @@ public class sensor : MonoBehaviour
     public LayerMask player;
     public Animator anim;
     public Rigidbody2D rb;
-    public bool working = false;
     
     void Start()
     {
@@ -23,7 +22,6 @@ public class sensor : MonoBehaviour
           anim.SetBool("isAttacking", true);
           rb.linearVelocity = Vector2.zero;
           rb.constraints = RigidbodyConstraints2D.FreezeAll;
-          working = true;
       }
           
       

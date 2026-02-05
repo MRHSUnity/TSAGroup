@@ -13,7 +13,7 @@ public class SkeleAttack : MonoBehaviour
            HealthUIPlayer health = collision.GetComponent<HealthUIPlayer>();
            if (health != null)
            { 
-               health.health -= damage; 
+               health.healthChange(damage);
                Debug.Log("Player hit for " + damage + " damage.");
            }
        }

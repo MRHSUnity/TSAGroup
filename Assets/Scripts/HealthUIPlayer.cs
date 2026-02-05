@@ -1,31 +1,30 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthUIPlayer : MonoBehaviour
 {
-    public float health, MaxHealth, pastHealth;
+    public float health, MaxHealth;
 
     [SerializeField] private HealthBarUI healthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthBar.setMaxHealth(MaxHealth);
-        pastHealth = health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pastHealth>health)
+        if (health <= 0)
         {
-            
-            setHealh(health-pastHealth);
-            pastHealth=health;
+            SceneManager.LoadScene("MenuMainScene");
+
         }
         
     }
-    public void setHealh(float healthChange)
+    public void healthChange(float healthChange)
     {
-        health += healthChange;
+        health -= healthChange;
         health = Mathf.Clamp(health, 0, MaxHealth);
 
         healthBar.setHealth(health);
