@@ -11,16 +11,7 @@ public class EnemyAttack : MonoBehaviour
         anim = GetComponentInParent(typeof(Animator)) as Animator;
         rb = GetComponent<Rigidbody2D>();
     }
-    private float MoveDirection
-    {
-        get
-        {
-            float vx = rb.linearVelocity.x;
-            if (Mathf.Abs(vx) > 0.01f) return Mathf.Sign(vx);
-            float scaleX = transform.localScale.x;
-            return Mathf.Sign(scaleX == 0f ? 1f : scaleX);
-        }
-    }
+  
     public void enemyAttack()
     {
         attackArea.SetActive(true);

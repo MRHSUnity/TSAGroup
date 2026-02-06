@@ -8137,39 +8137,6 @@ CapsuleCollider2D:
   m_Offset: {x: 1.1240548, y: 0.061537772}
   m_Size: {x: 0.3283891, y: 0.21213211}
   m_Direction: 1
---- !u!1 &1162145925 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-  m_PrefabInstance: {fileID: 593126497960471461}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1162145926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162145925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee81fd10641f834d9699b8761afac93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
-  weapon: 0
---- !u!114 &1162145927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162145925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b557646cf671e41a507d1da992b2e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthUIPlayer
-  health: 10
-  MaxHealth: 10
-  healthBar: {fileID: 907950345}
 --- !u!1001 &1205323222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42089,97 +42056,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main idle 1
       objectReference: {fileID: 0}
-    - target: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129107823606550577, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593635308365524919, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: gravity
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593635308365524919, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: jumpForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593635308365524919, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: healthBarUI
+    - target: {fileID: 4138128892753439894, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      propertyPath: healthBar
       value: 
       objectReference: {fileID: 907950345}
-    - target: {fileID: 3593635308365524919, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: attackPointLeft
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4125152583593364165, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Size.x
-      value: 0.4059343
-      objectReference: {fileID: 0}
-    - target: {fileID: 4125152583593364165, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Size.y
-      value: 0.09804808
-      objectReference: {fileID: 0}
-    - target: {fileID: 4125152583593364165, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4125152583593364165, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.005942492
-      objectReference: {fileID: 0}
-    - target: {fileID: 4125152583593364165, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734163271765820716, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608085404566158690, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Size.y
-      value: 0.2764455
-      objectReference: {fileID: 0}
-    - target: {fileID: 5608085404566158690, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.1400443
-      objectReference: {fileID: 0}
-    - target: {fileID: 6170672726145140991, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: enemies.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6452642120183403012, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495924216653319986, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495924216653319986, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2191580075661473976, guid: e5939ec8f0bc7eb4c9d880478fc4c34c, type: 3}
-    - target: {fileID: 7743029878682085025, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6452642120183403012, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 1162145926}
-    - targetCorrespondingSourceObject: {fileID: 633656004113221822, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1162145927}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
 --- !u!1001 &1377680080113956241
 PrefabInstance:

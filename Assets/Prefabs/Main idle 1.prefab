@@ -14,10 +14,12 @@ GameObject:
   - component: {fileID: 5608085404566158690}
   - component: {fileID: 3833518723654308830}
   - component: {fileID: 3593635308365524919}
+  - component: {fileID: 1284647358921357007}
   - component: {fileID: 4787203489496042632}
-  m_Layer: 0
+  - component: {fileID: 4138128892753439894}
+  m_Layer: 7
   m_Name: Main idle 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +39,6 @@ Transform:
   m_Children:
   - {fileID: 1393556406735465592}
   - {fileID: 1102269358207535536}
-  - {fileID: 6643495789692210737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6495924216653319986
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4723107735738678597, guid: 308030e227fefa5428836165e78db986, type: 3}
+  m_Sprite: {fileID: -2191580075661473976, guid: e5939ec8f0bc7eb4c9d880478fc4c34c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,7 +111,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 5
@@ -159,8 +160,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00086371106, y: 0.15347405}
-  m_Size: {x: 0.12650935, y: 0.3033049}
+  m_Offset: {x: -0.00086371106, y: 0.1400443}
+  m_Size: {x: 0.12650935, y: 0.2764455}
   m_Direction: 0
 --- !u!95 &3833518723654308830
 Animator:
@@ -196,21 +197,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575313520c7f444197d54360c148de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  rb: {fileID: 4734163271765820716}
   spd: 4
-  jumpForce: 9
+  jumpForce: 20
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   feetPosition: {fileID: 1102269358207535536}
   groundChackCicrle: 0.3
-  healthBarUI: {fileID: 0}
-  health: 8
-  maxHealth: 10
+  gravity: 7
   healthBar: {fileID: 0}
   jumpTime: 0.35
   jumpTimeCounter: 1
   input: 0
+--- !u!114 &1284647358921357007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633656004113221822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee81fd10641f834d9699b8761afac93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
+  weapon: 0
 --- !u!114 &4787203489496042632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,12 +234,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fba89707ff80444a4c679df5841895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Whip
-  enemies:
-    serializedVersion: 2
-    m_Bits: 64
-  radius: 0
   attackArea: {fileID: 7743029878682085025}
-  isAttacking: 0
+--- !u!114 &4138128892753439894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633656004113221822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b557646cf671e41a507d1da992b2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthUIPlayer
+  health: 10
+  MaxHealth: 10
+  healthBar: {fileID: 0}
 --- !u!1 &3129107823606550577
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,37 +276,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 371204234570490075}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6452642120183403012
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6643495789692210737}
-  m_Layer: 0
-  m_Name: AttackPointLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6643495789692210737
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6452642120183403012}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.257, y: 0.201, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,12 +344,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.07662251, y: -0.06407097}
-  m_Size: {x: 0.65325713, y: 0.098047934}
+  m_Offset: {x: 0, y: -0.005942492}
+  m_Size: {x: 0.4059343, y: 0.09804808}
   m_Direction: 1
 --- !u!114 &6170672726145140991
 MonoBehaviour:
@@ -374,3 +364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WhipAttackArea
   damage: 3
+  enemies:
+    serializedVersion: 2
+    m_Bits: 64
