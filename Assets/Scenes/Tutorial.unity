@@ -41476,6 +41476,9 @@ MonoBehaviour:
   player:
     serializedVersion: 2
     m_Bits: 128
+  knockbackForce: 6
+  knockbackUpwards: 8
+  stunDuration: 0.4
 --- !u!70 &1523064331
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
