@@ -8,7 +8,9 @@ public class SkeleAttack : MonoBehaviour
     public float knockbackForce = 8f;
     public float knockbackUpwards = 2f;
     public float stunDuration = 0.5f;
-
+    public Rigidbody2D rb;
+    public MonoBehaviour movementScript;
+    public Animator anim;
    private void OnTriggerEnter2D(Collider2D collision)
    { 
        if (((1 << collision.gameObject.layer) & player) != 0)
@@ -20,7 +22,7 @@ public class SkeleAttack : MonoBehaviour
                Debug.Log("Player hit for " + damage + " damage.");
            }
 
-           Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+            rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 // Determine direction: if player is left of attacker, push left (-1), otherwise right (+1)
@@ -30,24 +32,23 @@ public class SkeleAttack : MonoBehaviour
                 rb.linearVelocity = new Vector2(knockbackForce * direction, knockbackUpwards);
            
                 // Try to disable common player movement scripts during stun (if present)
-                MonoBehaviour movementScript = null;
-                var playerMovement = collision.GetComponent("PlayerMovement") as MonoBehaviour;
                 var playerController = collision.GetComponent("PlayerController") as MonoBehaviour;
 
                     movementScript = playerController;
 
                     movementScript.enabled = false;
        
-                StartCoroutine(StunCoroutine(rb, movementScript));
+                anim.SetBool("isStunned", true);
+                
             }
    }
 }
 
-    private IEnumerator StunCoroutine(Rigidbody2D rb, MonoBehaviour movementScript)
+    public void endStun()
     {
-        yield return new WaitForSeconds(stunDuration);
+        rb.linearVelocity = Vector2.zero;
+        movementScript.enabled = true;
+        anim.SetBool("isStunned", false);
 
-            rb.linearVelocity = Vector2.zero;
-            movementScript.enabled = true;
     }
 }
