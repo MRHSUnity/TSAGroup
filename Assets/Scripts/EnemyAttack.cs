@@ -21,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
     {
         attackArea.SetActive(false);
         anim.SetBool("isAttacking",false);
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;   
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     // Update is called once per frame
     void Update()

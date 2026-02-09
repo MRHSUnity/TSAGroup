@@ -14,18 +14,18 @@ public class Whip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
-    }
-    public void attacky()
-    {
-        if (!anim.GetBool("isWalkingLeft"))
+        if (!anim.GetBool("isWalkingLeft") && !anim.GetBool("attackWhip"))
         {
             attackArea.transform.localPosition = new Vector3(.255f, attackArea.transform.localPosition.y, attackArea.transform.localPosition.z);
         }
-        if (anim.GetBool("isWalkingLeft"))
+        if (anim.GetBool("isWalkingLeft") && !anim.GetBool("attackWhip"))
         {
             attackArea.transform.localPosition = new Vector3(-.275f, attackArea.transform.localPosition.y, attackArea.transform.localPosition.z);
         }
+    }
+    public void attacky()
+    {
+        
        
         attackArea.SetActive(true);
         
