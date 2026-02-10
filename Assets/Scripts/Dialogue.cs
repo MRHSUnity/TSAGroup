@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpd;
     private int index;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,8 +36,10 @@ public class Dialogue : MonoBehaviour
     }
     public void StartDialogue()
     {
+        
         index = 0;
         StartCoroutine(TypeLine());
+
     }
     IEnumerator TypeLine()
     {
@@ -63,4 +66,5 @@ public class Dialogue : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    
 }
