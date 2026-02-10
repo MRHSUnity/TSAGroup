@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         // add facing left and right
         
     }
-
+    
 
     // public void attack()
     // {

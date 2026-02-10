@@ -44,11 +44,5 @@ public class SkeleAttack : MonoBehaviour
    }
 }
 
-    public void endStun()
-    {
-        rb.linearVelocity = Vector2.zero;
-        movementScript.enabled = true;
-        anim.SetBool("isStunned", false);
-
-    }
+    
 }

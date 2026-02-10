@@ -6,6 +6,8 @@ public class WeaponController : MonoBehaviour
     private GameObject player;
     private Whip whip;
     private Rigidbody2D rb;
+    public MonoBehaviour movementScript;
+
     public enum WeaponType
     {
         Whip,
@@ -54,5 +56,12 @@ public class WeaponController : MonoBehaviour
             
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+    }
+    public void endStun()
+    {
+        rb.linearVelocity = Vector2.zero;
+        movementScript.enabled = true;
+        anim.SetBool("isStunned", false);
+
     }
 }
