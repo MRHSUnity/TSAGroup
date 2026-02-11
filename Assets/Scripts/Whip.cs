@@ -4,6 +4,7 @@ public class Whip : MonoBehaviour
 {
     public GameObject attackArea;
     private Animator anim;
+    public EnemyHealth enemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +29,6 @@ public class Whip : MonoBehaviour
         
        
         attackArea.SetActive(true);
-        
 
     }
     

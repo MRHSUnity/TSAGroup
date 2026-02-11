@@ -55,8 +55,18 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log("Enemy dead");
             Destroy(gameObject);
         }
+        
     }
 
+    public void Stun()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+     public void EndStun()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
     private void flip()
     {
         Vector3 localScale = transform.localScale;

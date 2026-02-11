@@ -17,7 +17,7 @@ public class sensor : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-      if (((1 << collision.gameObject.layer) & player) != 0)
+      if ((((1 << collision.gameObject.layer) & player) != 0)&&!anim.GetBool("SkeleStun"))
       {
           anim.SetBool("isAttacking", true);
           rb.linearVelocity = Vector2.zero;
@@ -26,6 +26,5 @@ public class sensor : MonoBehaviour
           
       
   }
-    // Update is called once per frame
 
 }
