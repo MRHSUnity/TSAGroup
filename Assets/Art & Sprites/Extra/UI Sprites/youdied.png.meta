@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 74d3995f3c78f5b4f959d5aadfe34449
+guid: e9af602312d155e43b4e94535103a910
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4281637774074219296
-    second: jump_0
+      213: -2441198726268815977
+    second: youdied_0
   - first:
-      213: -7862396843884538191
-    second: jump_1
+      213: 6562300023919646584
+    second: youdied_1
   - first:
-      213: 8276514422256456541
-    second: jump_2
+      213: -458455911868889866
+    second: youdied_2
   - first:
-      213: -3697937850672776721
-    second: jump_3
+      213: 9112716796988877210
+    second: youdied_3
   - first:
-      213: 4987614716155920338
-    second: jump_4
+      213: 3266133914457753861
+    second: youdied_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -112,111 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_0
+      name: youdied_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 16
+        x: 12
+        y: 4
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7957c9641be1f1ed0800000000000000
+      internalID: -2441198726268815977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youdied_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 16
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877944b6a19f11b50800000000000000
+      internalID: 6562300023919646584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youdied_2
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 4
+        width: 30
         height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02b8694dede6b6b30800000000000000
-      internalID: 4281637774074219296
+      spriteID: 6f480e3f6cc33a9f0800000000000000
+      internalID: -458455911868889866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_1
+      name: youdied_3
       rect:
         serializedVersion: 2
-        x: 35
-        y: 0
-        width: 15
-        height: 27
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 56
+        y: 14
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b61c1d2ab723e290800000000000000
-      internalID: -7862396843884538191
+      spriteID: a99e14745afd67e70800000000000000
+      internalID: 9112716796988877210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_2
+      name: youdied_4
       rect:
         serializedVersion: 2
-        x: 57
-        y: 0
-        width: 15
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 63
+        y: 13
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d535ef424061cd270800000000000000
-      internalID: 8276514422256456541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_3
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fe97d290e194eacc0800000000000000
-      internalID: -3697937850672776721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_4
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 1
-        width: 15
-        height: 27
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2dffbf8a821973540800000000000000
-      internalID: 4987614716155920338
+      spriteID: 5094c109d73a35d20800000000000000
+      internalID: 3266133914457753861
       vertices: []
       indices: 
       edges: []
@@ -225,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 168c7ad6062cb7640957307abf319818
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jump_0: 4281637774074219296
-      jump_1: -7862396843884538191
-      jump_2: 8276514422256456541
-      jump_3: -3697937850672776721
-      jump_4: 4987614716155920338
+      youdied_0: -2441198726268815977
+      youdied_1: 6562300023919646584
+      youdied_2: -458455911868889866
+      youdied_3: 9112716796988877210
+      youdied_4: 3266133914457753861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
