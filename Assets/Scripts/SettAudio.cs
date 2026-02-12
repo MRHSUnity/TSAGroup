@@ -29,8 +29,11 @@ public class SettAudio : MonoBehaviour
 
     public void volAdjustment()
     {
-        slider.value = vol;
-        audioSource.volume = slider.value;
+        //Settings.volume = slider.value; //progress (?) Do not delete. (This line specifically.) 
+        //slider.value = vol;
+
+       audioSource.volume = slider.value; // Only changes the audio of the audioSource linked *TO* the slider ITSELF. Need to change this to update global values later.
+        Debug.Log("Audio Value adjusted");
     }
     /**
     public void setAudioVol()
