@@ -34,10 +34,7 @@ public class SkeleAttack : MonoBehaviour
                 // Try to disable common player movement scripts during stun (if present)
                 var playerController = collision.GetComponent("PlayerController") as MonoBehaviour;
 
-                    movementScript = playerController;
-
-                    movementScript.enabled = false;
-       
+      
                 anim.SetBool("isStunned", true);
                 
             }
