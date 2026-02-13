@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
        // tuning: variable jump height (short tap vs longer hold)
        // make jumps and falls slower by reducing multipliers and initial impulse
        float upSpeedFactor = 0.6f;        // slightly lower initial impulse
-       float fallMultiplier = 1.6f;         // slower, less snappy fall
+       float fallMultiplier = 2f;         // slower, less snappy fall
        float lowJumpMultiplier = 1.3f;    // less aggressive shortening when released early
        
        // Single jump: only allow jump when grounded
