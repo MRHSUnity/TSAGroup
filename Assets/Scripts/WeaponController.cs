@@ -57,6 +57,10 @@ public class WeaponController : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
+    public void beginStun()
+    {
+        movementScript.enabled= false;
+    }
     public void endStun()
     {
         rb.linearVelocity = Vector2.zero;
