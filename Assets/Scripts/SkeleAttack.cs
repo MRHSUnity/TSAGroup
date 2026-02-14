@@ -13,7 +13,7 @@ public class SkeleAttack : MonoBehaviour
     public Animator anim;
    private void OnTriggerEnter2D(Collider2D collision)
    { 
-       if (((1 << collision.gameObject.layer) & player) != 0)
+       if ((((1 << collision.gameObject.layer) & player) != 0)&& !anim.GetBool("isAttacking"))
        {
            HealthUIPlayer health = collision.GetComponent<HealthUIPlayer>();
            if (health != null)

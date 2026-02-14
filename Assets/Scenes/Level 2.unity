@@ -41059,14 +41059,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1366902867}
     - target: {fileID: 4279987487014919217, guid: d919630ad39d9284cba49cb4e34581fe, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4279987487014919217, guid: d919630ad39d9284cba49cb4e34581fe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4279987487014919217, guid: d919630ad39d9284cba49cb4e34581fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.2622
       objectReference: {fileID: 0}
@@ -41110,8 +41102,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: dracIdle_0 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6870887710773964589, guid: d919630ad39d9284cba49cb4e34581fe, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
