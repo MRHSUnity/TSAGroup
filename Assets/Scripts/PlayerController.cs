@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     private bool grounded;
     public Transform feetPosition;
-    public float groundChackCicrle;
+    public float groundCheckCicrle;
     public float gravity;
     private bool facingRight = true;
     
@@ -33,31 +33,24 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //health = 10f;
-        
+
 
     }
   
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(input * spd, rb.linearVelocity.y);
-
-        
-        
     }
     // Update is called once per frame
     void Update()
     {
-        //if (input.GetKeyDown("d"))
-        //{
-        //    setHealth(-2f);
-        //}
-        //if (input.GetKeyDown("u"))
-        //{
-        //    setHealth(2f);
-        //}
        input = Input.GetAxisRaw("Horizontal");
-       grounded = Physics2D.OverlapCircle(feetPosition.position, groundChackCicrle, groundLayer);
+       grounded = Physics2D.OverlapCircle(feetPosition.position, groundCheckCicrle, groundLayer);
+       if (grounded && rb.linearVelocity.y <= 0f)
+       {
+           isJumping = false;
+           anim.SetBool("isJumping", false);
+       }
        
        // tuning: variable jump height (short tap vs longer hold)
        // make jumps and falls slower by reducing multipliers and initial impulse
@@ -75,6 +68,8 @@ public class PlayerController : MonoBehaviour
            rb.linearVelocity = new Vector2(rb.linearVelocity.x, startY);
        }
        
+
+
        // keep global gravity based on configured value
        Physics2D.gravity = new Vector2(0, -gravity);
        
@@ -92,10 +87,7 @@ public class PlayerController : MonoBehaviour
            }
        }
        
-       if (Input.GetButtonUp("Jump"))
-       {
-           isJumping = false;
-       }
+       // when jump button is released, stop the hold window
         if (Input.GetButtonUp("Jump"))
         { 
             isJumping = false;
@@ -143,15 +135,6 @@ public class PlayerController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-
-    // public void attack()
-    // {
-    //     weaponController.attack();
-    // }
-    // public void endAttack()
-    // {
-    //     weaponController.endAttack();
-    // }
-
+    
 
 }

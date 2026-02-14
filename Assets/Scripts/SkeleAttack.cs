@@ -24,11 +24,11 @@ public class SkeleAttack : MonoBehaviour
 
             rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
-            {
+            {   
                 // Determine direction: if player is left of attacker, push left (-1), otherwise right (+1)
                 float direction = collision.transform.position.x < transform.position.x ? -1f : 1f;
-           
                 // Apply knockback velocity
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation; // Unfreeze player to allow knockback
                 rb.linearVelocity = new Vector2(knockbackForce * direction, knockbackUpwards);
            
                 // Try to disable common player movement scripts during stun (if present)

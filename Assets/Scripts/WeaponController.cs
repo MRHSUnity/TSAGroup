@@ -68,6 +68,5 @@ public class WeaponController : MonoBehaviour
         movementScript.enabled = true;
         anim.SetBool("isStunned", false);
         anim.SetBool("attackWhip", false);
-
     }
 }

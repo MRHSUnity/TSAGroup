@@ -53,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Debug.Log("Enemy dead");
             anim.SetBool("isDying", true);
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         
     }
