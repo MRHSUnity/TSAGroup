@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 0cd0e971249e1024b8f0935866c685fa
+guid: 3351f9eb0e89e5e4aa835e3269ad6084
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6569052228815117812
-    second: hittingskelly_0
+      213: 4250009239330989086
+    second: Dyingskelly_0
   - first:
-      213: 6441350802065282321
-    second: hittingskelly_1
+      213: -3240805589051877224
+    second: Dyingskelly_1
   - first:
-      213: 7506243069016300013
-    second: hittingskelly_2
+      213: 3309992686894258089
+    second: Dyingskelly_2
   - first:
-      213: 6550936890723897313
-    second: hittingskelly_3
+      213: 3678419729817496244
+    second: Dyingskelly_3
   - first:
-      213: -927302076322007370
-    second: hittingskelly_4
+      213: -5152266931738418111
+    second: Dyingskelly_4
+  - first:
+      213: -3448244550364982522
+    second: Dyingskelly_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,115 +111,150 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hittingskelly_0
+      name: Dyingskelly_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 2
-        width: 15
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4fd5381a236f92b50800000000000000
-      internalID: 6569052228815117812
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hittingskelly_1
-      rect:
-        serializedVersion: 2
-        x: 41
+        x: 3
         y: 0
-        width: 19
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 15
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11557ce3d66446950800000000000000
-      internalID: 6441350802065282321
+      spriteID: e14a37ab2e01bfa30800000000000000
+      internalID: 4250009239330989086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hittingskelly_2
+      name: Dyingskelly_1
       rect:
         serializedVersion: 2
-        x: 66
-        y: 3
-        width: 31
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 0
+        width: 15
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de9547e2d488b2860800000000000000
-      internalID: 7506243069016300013
+      spriteID: 898567ebc785603d0800000000000000
+      internalID: -3240805589051877224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hittingskelly_3
+      name: Dyingskelly_2
       rect:
         serializedVersion: 2
-        x: 98
-        y: 3
-        width: 36
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 58
+        y: 0
+        width: 20
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ef899dc46a99ea50800000000000000
-      internalID: 6550936890723897313
+      spriteID: 9a71977cfc47fed20800000000000000
+      internalID: 3309992686894258089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hittingskelly_4
+      name: Dyingskelly_3
       rect:
         serializedVersion: 2
-        x: 144
-        y: 3
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 85
+        y: 0
+        width: 26
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b63855bcaf8123f0800000000000000
-      internalID: -927302076322007370
+      spriteID: 4ba6f82514f5c0330800000000000000
+      internalID: 3678419729817496244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dyingskelly_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 10
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1446db106887f78b0800000000000000
+      internalID: -5152266931738418111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dyingskelly_5
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 21
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60391dcd9df5520d0800000000000000
+      internalID: -3448244550364982522
       vertices: []
       indices: 
       edges: []
@@ -225,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 131a5dcef58f39446b387c2f5db2027a
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      hittingskelly_0: 6569052228815117812
-      hittingskelly_1: 6441350802065282321
-      hittingskelly_2: 7506243069016300013
-      hittingskelly_3: 6550936890723897313
-      hittingskelly_4: -927302076322007370
+      Dyingskelly_0: 4250009239330989086
+      Dyingskelly_1: -3240805589051877224
+      Dyingskelly_2: 3309992686894258089
+      Dyingskelly_3: 3678419729817496244
+      Dyingskelly_4: -5152266931738418111
+      Dyingskelly_5: -3448244550364982522
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

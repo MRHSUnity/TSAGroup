@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: ecc2663f9e66b7c458566c1521879068
+guid: 0cd0e971249e1024b8f0935866c685fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7117650665143973771
-    second: werewolf-default_0
+      213: 6569052228815117812
+    second: hittingskelly_0
+  - first:
+      213: 6441350802065282321
+    second: hittingskelly_1
+  - first:
+      213: 7506243069016300013
+    second: hittingskelly_2
+  - first:
+      213: 6550936890723897313
+    second: hittingskelly_3
+  - first:
+      213: -927302076322007370
+    second: hittingskelly_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: werewolf-default_0
+      name: hittingskelly_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 1
-        width: 22
-        height: 27
+        x: 7
+        y: 2
+        width: 15
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b87ba3ba199f6c260800000000000000
-      internalID: 7117650665143973771
+      spriteID: 4fd5381a236f92b50800000000000000
+      internalID: 6569052228815117812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hittingskelly_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11557ce3d66446950800000000000000
+      internalID: 6441350802065282321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hittingskelly_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de9547e2d488b2860800000000000000
+      internalID: 7506243069016300013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hittingskelly_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 3
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef899dc46a99ea50800000000000000
+      internalID: 6550936890723897313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hittingskelly_4
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 3
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b63855bcaf8123f0800000000000000
+      internalID: -927302076322007370
       vertices: []
       indices: 
       edges: []
@@ -148,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      werewolf-default_0: 7117650665143973771
+      hittingskelly_0: 6569052228815117812
+      hittingskelly_1: 6441350802065282321
+      hittingskelly_2: 7506243069016300013
+      hittingskelly_3: 6550936890723897313
+      hittingskelly_4: -927302076322007370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -57,11 +57,16 @@ public class WeaponController : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
+    public void beginStun()
+    {
+        movementScript.enabled= false;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
     public void endStun()
     {
         rb.linearVelocity = Vector2.zero;
         movementScript.enabled = true;
         anim.SetBool("isStunned", false);
-
+        anim.SetBool("attackWhip", false);
     }
 }

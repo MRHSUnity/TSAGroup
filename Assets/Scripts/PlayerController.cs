@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     private bool grounded;
     public Transform feetPosition;
-    public float groundChackCicrle;
+    public float groundCheckCicrle;
     public float gravity;
+    private bool facingRight = true;
     
     public RectTransform healthBar;
     
@@ -32,82 +33,61 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //health = 10f;
-        
+
 
     }
-    public void setHealth(float healthChange)
-    {
-    }
+  
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(input * spd, rb.linearVelocity.y);
-
-        
-        
     }
     // Update is called once per frame
     void Update()
     {
-        //if (input.GetKeyDown("d"))
-        //{
-        //    setHealth(-2f);
-        //}
-        //if (input.GetKeyDown("u"))
-        //{
-        //    setHealth(2f);
-        //}
-        input = Input.GetAxisRaw("Horizontal");
-        grounded = Physics2D.OverlapCircle(feetPosition.position, groundChackCicrle, groundLayer);
-            
-        // tuning: variable jump height (short tap vs longer hold)
-        // make jumps and falls slower by reducing multipliers and initial impulse
-        float upSpeedFactor = 0.85f;        // slightly lower initial impulse
-        float fallMultiplier = 1.3f;       // slower, less snappy fall
-        float lowJumpMultiplier = 1.3f;    // less aggressive shortening when released early
-        
-        // manage double jump using a per-instance PlayerPrefs key (persists across frames)
-        string jumpKey = "jumpsLeft_" + GetInstanceID();
-        // reset jumps when grounded
-        if (grounded)
-        {
-            PlayerPrefs.SetInt(jumpKey, 2);
-        }
-        
-        // Jump start: allow jump if grounded or if we have extra jumps remaining
-        if (Input.GetButtonDown("Jump"))
-        {
-            int jumpsLeft = PlayerPrefs.GetInt(jumpKey, 2);
-            if (grounded || jumpsLeft > 0)
-        { 
-            isJumping = true; 
-            jumpTimeCounter = jumpTime; 
-            float startY = jumpForce * upSpeedFactor;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, startY);
-        
-                // consume one jump if not grounded (for initial ground jump we still decrement to allow one mid-air)
-                jumpsLeft = Mathf.Max(jumpsLeft - 1, 0);
-                PlayerPrefs.SetInt(jumpKey, jumpsLeft);
-            }
-        }
-            
-        // keep global gravity based on configured value
-        Physics2D.gravity = new Vector2(0, -gravity);
-            
-        // allow variable jump height by a short hold window
-        if (Input.GetButton("Jump") && isJumping)
-        {
-            if (jumpTimeCounter > 0f)
-            { 
-                // still within hold window: consume time, let default gravity be applied
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-            
+       input = Input.GetAxisRaw("Horizontal");
+       grounded = Physics2D.OverlapCircle(feetPosition.position, groundCheckCicrle, groundLayer);
+       if (grounded && rb.linearVelocity.y <= 0f)
+       {
+           isJumping = false;
+           anim.SetBool("isJumping", false);
+       }
+       
+       // tuning: variable jump height (short tap vs longer hold)
+       // make jumps and falls slower by reducing multipliers and initial impulse
+       float upSpeedFactor = 0.6f;        // slightly lower initial impulse
+       float fallMultiplier = 1.6f;         // slower, less snappy fall
+       float lowJumpMultiplier = 1.3f;    // less aggressive shortening when released early
+       
+       // Single jump: only allow jump when grounded
+       if (Input.GetButtonDown("Jump") && grounded)
+       {
+           anim.SetBool("isJumping", true);
+           isJumping = true;
+           jumpTimeCounter = jumpTime;
+           float startY = jumpForce * upSpeedFactor;
+           rb.linearVelocity = new Vector2(rb.linearVelocity.x, startY);
+       }
+       
+
+
+       // keep global gravity based on configured value
+       Physics2D.gravity = new Vector2(0, -gravity);
+       
+       // allow variable jump height by a short hold window
+       if (Input.GetButton("Jump") && isJumping)
+       {
+           if (jumpTimeCounter > 0f)
+           {
+               // still within hold window: consume time, let default gravity be applied
+               jumpTimeCounter -= Time.deltaTime;
+           }
+           else
+           {
+               isJumping = false;
+           }
+       }
+       
+       // when jump button is released, stop the hold window
         if (Input.GetButtonUp("Jump"))
         { 
             isJumping = false;
@@ -129,39 +109,32 @@ public class PlayerController : MonoBehaviour
                 rb.linearVelocity.y + Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime
             );
         }
-        if(input >.1f)
+        if(input >.1f && !facingRight && !anim.GetBool("attackWhip"))
         {
-            anim.SetBool("isWalkingRight", true);
+            flip();
+            facingRight = true;
+        }
+        if(input < -.1f && facingRight && !anim.GetBool("attackWhip"))
+        {
+            flip();
+            facingRight = false;
+        }
+        if (input > .1f || input < -.1f)
+        {
+            anim.SetBool("isWalking", true);
         }
         else
         {
-            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isWalking", false);
         }
-        if(input  < -.1f)
-        {
-            anim.SetBool("isWalkingLeft", true);
-        }
-        else
-        {
-            anim.SetBool("isWalkingLeft", false);
-        }
-        // add facing left and right
         
+    }
+    private void flip()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
     
 
-    // public void attack()
-    // {
-    //     weaponController.attack();
-    // }
-    // public void endAttack()
-    // {
-    //     weaponController.endAttack();
-    // }
-
-    private void OnDrawGizmos()
-    {
-        
-
-    }
 }

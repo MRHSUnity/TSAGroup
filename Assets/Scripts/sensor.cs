@@ -15,9 +15,9 @@ public class sensor : MonoBehaviour
         rb = GetComponentInParent<Rigidbody2D>();
     }
 
-  private void OnTriggerEnter2D(Collider2D collision)
+  private void OnTriggerStay2D(Collider2D collision)
   {
-      if ((((1 << collision.gameObject.layer) & player) != 0)&&!anim.GetBool("SkeleStun"))
+      if ((((1 << collision.gameObject.layer) & player) != 0)&&!anim.GetBool("isAttacking"))
       {
           anim.SetBool("isAttacking", true);
           rb.linearVelocity = Vector2.zero;

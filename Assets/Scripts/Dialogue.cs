@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using NUnit.Framework.Internal.Commands;
+using System;
 
 public class Dialogue : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Dialogue : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        textComponent.text = string.Empty;
+        index = 0;
         //StartDialogue();
     }
 
@@ -27,6 +28,7 @@ public class Dialogue : MonoBehaviour
             {
                 NextLine();
             }
+            
             else
             {
                 StopAllCoroutines();
@@ -36,9 +38,9 @@ public class Dialogue : MonoBehaviour
     }
     public void StartDialogue()
     {
-        
-        index = 0;
+        textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
+        Debug.Log(lines[index]);
 
     }
     IEnumerator TypeLine()

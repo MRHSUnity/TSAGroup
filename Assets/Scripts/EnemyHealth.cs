@@ -11,7 +11,6 @@ public class EnemyHealth : MonoBehaviour
     private Transform currentPoint;
     public float speed;
     float curhealth;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,20 +52,16 @@ public class EnemyHealth : MonoBehaviour
         if(health<=0)
         {
             Debug.Log("Enemy dead");
-            Destroy(gameObject);
+            anim.SetBool("isDying", true);
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         
     }
-
-    public void Stun()
+    private void dead()
     {
-        rb.linearVelocity = Vector2.zero;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        Destroy(gameObject);
     }
-     public void EndStun()
-    {
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
+    
     private void flip()
     {
         Vector3 localScale = transform.localScale;
