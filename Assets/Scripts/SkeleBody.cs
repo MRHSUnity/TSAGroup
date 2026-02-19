@@ -3,18 +3,24 @@ using UnityEngine;
 
 public class SkeleBody : MonoBehaviour
 {
-    public int damage = 3;
     public LayerMask player;
     public float knockbackForce = 8f;
     public float knockbackUpwards = 2f;
-    public float stunDuration = 0.5f;
     public Rigidbody2D rb;
     public MonoBehaviour movementScript;
+    public Animator playerAnim;
     public Animator anim;
     private void OnTriggerEnter2D(Collider2D collision)
     { 
-        if ((((1 << collision.gameObject.layer) & player) != 0)&& !anim.GetBool("isAttacking"))
+        if ((((1 << collision.gameObject.layer) & player) != 0) && !anim.GetBool("isAttacking"))
         {
+            HealthUIPlayer health = collision.GetComponent<HealthUIPlayer>();
+            if (health != null)
+            { 
+                health.healthChange(1); // Deal 1 damage for body collision
+                Debug.Log("Player hit for 1 damage by body.");
+            }
+        
             rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
             {   
@@ -28,7 +34,7 @@ public class SkeleBody : MonoBehaviour
                 var playerController = collision.GetComponent("PlayerController") as MonoBehaviour;
 
       
-                anim.SetBool("isStunned", true);
+                playerAnim.SetBool("isStunned", true);
                 
             }
         }
