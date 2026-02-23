@@ -1,7 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Whip : MonoBehaviour
+public class HolyWater : MonoBehaviour
 {
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform target;
+
+    [SerializeField]private float shootRate;
+    private float shootTimer;
+    
     public GameObject attackArea;
     private Animator anim;
     public EnemyHealth enemy;
@@ -17,8 +24,9 @@ public class Whip : MonoBehaviour
 
     public void attacky()
     {
-        audioSource.Play();
-        attackArea.SetActive(true);
+        // audioSource.Play();
+        // needs audio for holy water   
+        Instantiate(projectilePrefab, target.position, Quaternion.identity);   
     }
     
     public void endAttacky()
@@ -29,3 +37,4 @@ public class Whip : MonoBehaviour
     }
     
 }
+

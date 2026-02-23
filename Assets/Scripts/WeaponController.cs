@@ -28,21 +28,24 @@ public class WeaponController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            if (weapon == WeaponType.Whip)
-            {
-                anim.SetBool("attackWhip", true);
+
+                anim.SetBool("attack", true);
                 rb.linearVelocity = Vector2.zero;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-            }
+            
         }
     }
 
     public void attack()
     {
+        /*
+         * Whip = 1
+         * Holy Water = 2
+         */
         if (weapon == WeaponType.Whip)
         {
             whip.attacky();
+            anim.SetInteger("weapon", 1);
         }
         
 
