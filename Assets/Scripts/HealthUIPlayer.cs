@@ -18,7 +18,7 @@ public class HealthUIPlayer : MonoBehaviour
         if (health <= 0)
         {
             SceneManager.LoadScene("DeathScene");
-
+            
         }
         
     }

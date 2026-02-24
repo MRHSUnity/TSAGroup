@@ -24,7 +24,7 @@ public class Whip : MonoBehaviour
     public void endAttacky()
     {
         attackArea.SetActive(false);
-        anim.SetBool("attackWhip", false);
+        anim.SetBool("attack", false);
         
     }
     
