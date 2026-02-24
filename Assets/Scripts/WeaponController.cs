@@ -4,18 +4,20 @@ public class WeaponController : MonoBehaviour
 {
     private Animator anim;
     private GameObject player;
-    private Whip whip;
     private Rigidbody2D rb;
     public MonoBehaviour movementScript;
 
     public enum WeaponType
     {
         Whip,
-        Sword,
+        HolyWater,
         Bow
     }
 
     public WeaponType weapon;
+    
+    private Whip whip;
+    private HolyWater holyWater;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
@@ -47,7 +49,11 @@ public class WeaponController : MonoBehaviour
             whip.attacky();
             anim.SetInteger("weapon", 1);
         }
-        
+
+        if (weapon == WeaponType.HolyWater)
+        {
+            
+        }
 
     }
     public void endAttack()

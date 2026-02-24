@@ -6,8 +6,8 @@ public class HolyWater : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform target;
 
-    [SerializeField]private float shootRate;
-    private float shootTimer;
+    public float shootRate;
+    [SerializeField] private float shootTimer;
     
     public GameObject attackArea;
     private Animator anim;
@@ -19,22 +19,24 @@ public class HolyWater : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-
     // Update is called once per frame
-
-    public void attacky()
+    private void Update()
     {
-        // audioSource.Play();
-        // needs audio for holy water   
-        Instantiate(projectilePrefab, target.position, Quaternion.identity);   
-    }
-    
-    public void endAttacky()
-    {
-        attackArea.SetActive(false);
-        anim.SetBool("attack", false);
+        shootTimer += Time.deltaTime;
         
     }
+    public void attacky()
+    {
+        if (shootTimer <=0)
+        {
+            shootTimer = shootRate;
+            Instantiate(projectilePrefab, target.position, Quaternion.identity);   
+
+        }
+        // audioSource.Play();
+        // needs audio for holy water   
+    }
+ 
     
 }
 
