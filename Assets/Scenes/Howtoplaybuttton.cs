@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 
 public class Howtoplaybuttton : MonoBehaviour
 {
