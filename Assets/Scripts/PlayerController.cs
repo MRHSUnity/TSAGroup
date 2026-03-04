@@ -59,7 +59,10 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
         if (isGrounded)
+        {
             lastWallJumpSide = 0;
+            anim.SetBool("isJumping", false);
+        }
 
         // WALL DETECTION (stable box check)
         Collider2D hitRight = Physics2D.OverlapBox(
@@ -89,7 +92,9 @@ public class PlayerController : MonoBehaviour
 
         // Jump buffer
         if (Input.GetButtonDown("Jump"))
+        {
             jumpBufferCounter = jumpBufferTime;
+        }
         else
             jumpBufferCounter -= Time.deltaTime;
 
@@ -109,6 +114,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 jumpBufferCounter = 0;
+                anim.SetBool("isJumping", true);
             }
             // Celeste wall jump
             else if (isWallSliding)
@@ -125,7 +131,8 @@ public class PlayerController : MonoBehaviour
                 }
 
                 rb.linearVelocity = new Vector2(-wallSide * wallJumpForceX, verticalVelocity);
-
+                anim.SetBool("isJumping", true);
+                
                 lastWallJumpSide = wallSide;
                 jumpBufferCounter = 0;
             }
