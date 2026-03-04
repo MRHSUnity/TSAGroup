@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5608085404566158690}
   - component: {fileID: 3833518723654308830}
   - component: {fileID: 3593635308365524919}
+  - component: {fileID: 5441957327770745936}
   - component: {fileID: 1284647358921357007}
   - component: {fileID: 4787203489496042632}
   - component: {fileID: 4138128892753439894}
@@ -39,6 +40,7 @@ Transform:
   m_Children:
   - {fileID: 1393556406735465592}
   - {fileID: 1102269358207535536}
+  - {fileID: 7978020817089697619}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6495924216653319986
@@ -136,7 +138,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 23293a9bbcd6b3a4aa2a3ab4c17bd399, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -197,18 +199,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c575313520c7f444197d54360c148de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  spd: 4
-  jumpForce: 20
+  rb: {fileID: 0}
+  groundCheck: {fileID: 1102269358207535536}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  feetPosition: {fileID: 1102269358207535536}
-  groundChackCicrle: 0.3
-  gravity: 7
-  healthBar: {fileID: 0}
-  jumpTime: 0.35
-  jumpTimeCounter: 1
-  input: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  moveSpeed: 6
+  acceleration: 60
+  deceleration: 80
+  airControlMultiplier: 0.7
+  jumpForce: 17
+  coyoteTime: 0.1
+  jumpBufferTime: 0.1
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  wallCheckSize: {x: 0.2, y: 0.9}
+  wallSlideSpeed: 6
+  wallJumpForceX: 8
+  wallJumpForceY: 14
+  wallJumpLockTime: 0.2
+--- !u!114 &5441957327770745936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633656004113221822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee81fd10641f834d9699b8761afac93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
+  movementScript: {fileID: 0}
+  weapon: 0
 --- !u!114 &1284647358921357007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee81fd10641f834d9699b8761afac93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
+  movementScript: {fileID: 3593635308365524919}
   weapon: 0
 --- !u!114 &4787203489496042632
 MonoBehaviour:
@@ -235,6 +262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Whip
   attackArea: {fileID: 7743029878682085025}
+  enemy: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &4138128892753439894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +304,38 @@ Transform:
   m_GameObject: {fileID: 3129107823606550577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 371204234570490075}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7314273930224520832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7978020817089697619}
+  m_Layer: 7
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7978020817089697619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314273930224520832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0856, y: 0.1209, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
