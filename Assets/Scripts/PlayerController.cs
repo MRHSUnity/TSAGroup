@@ -1,140 +1,193 @@
-using System;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
-    public float spd;
-    public float jumpForce;
+    // References
+    public Rigidbody2D rb;
+    public Transform groundCheck;
     public LayerMask groundLayer;
-    private bool grounded;
-    public Transform feetPosition;
-    public float groundCheckCicrle;
-    public float gravity;
-    private bool facingRight = true;
-    
-    public RectTransform healthBar;
-    
+    public LayerMask wallLayer;
 
-    public float jumpTime = 0.35f;
-    public float jumpTimeCounter;
-    private bool isJumping;
-    
-    
-    
-    public float input;
+    // Movement
+    public float moveSpeed = 8f;
+    public float acceleration = 60f;
+    public float deceleration = 80f;
+    public float airControlMultiplier = 0.7f;
+
+    // Jump
+    public float jumpForce = 12f;
+    public float coyoteTime = 0.1f;
+    public float jumpBufferTime = 0.1f;
+
+    // Better Gravity
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+    // Celeste Wall Settings
+    public Vector2 wallCheckSize = new Vector2(0.2f, 0.9f);
+    public float wallSlideSpeed = 1.5f;
+    public float wallJumpForceX = 16f;
+    public float wallJumpForceY = 14f;
+    public float wallJumpLockTime = 0.2f;
+
+    private bool isGrounded;
+    private bool isWallSliding;
+    private bool isWallJumping;
+
+    private float horizontal;
+    private float coyoteCounter;
+    private float jumpBufferCounter;
+    private float wallJumpTimer;
+
+    private int wallSide;            // -1 = left wall, 1 = right wall
+    private int lastWallJumpSide = 0;
+
+    private bool facingRight = true;
     private Animator anim;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
-
     }
-  
-    void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(input * spd, rb.linearVelocity.y);
-    }
-    // Update is called once per frame
+
     void Update()
     {
-       input = Input.GetAxisRaw("Horizontal");
-       grounded = Physics2D.OverlapCircle(feetPosition.position, groundCheckCicrle, groundLayer);
-       if (grounded && rb.linearVelocity.y <= 0f)
-       {
-           isJumping = false;
-           anim.SetBool("isJumping", false);
-       }
-       
-       // tuning: variable jump height (short tap vs longer hold)
-       // make jumps and falls slower by reducing multipliers and initial impulse
-       float upSpeedFactor = 0.6f;        // slightly lower initial impulse
-       float fallMultiplier = 1.6f;         // slower, less snappy fall
-       float lowJumpMultiplier = 1.3f;    // less aggressive shortening when released early
-       
-       // Single jump: only allow jump when grounded
-       if (Input.GetButtonDown("Jump") && grounded)
-       {
-           anim.SetBool("isJumping", true);
-           isJumping = true;
-           jumpTimeCounter = jumpTime;
-           float startY = jumpForce * upSpeedFactor;
-           rb.linearVelocity = new Vector2(rb.linearVelocity.x, startY);
-       }
-       
+        horizontal = Input.GetAxisRaw("Horizontal");
 
+        // Ground check
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-       // keep global gravity based on configured value
-       Physics2D.gravity = new Vector2(0, -gravity);
-       
-       // allow variable jump height by a short hold window
-       if (Input.GetButton("Jump") && isJumping)
-       {
-           if (jumpTimeCounter > 0f)
-           {
-               // still within hold window: consume time, let default gravity be applied
-               jumpTimeCounter -= Time.deltaTime;
-           }
-           else
-           {
-               isJumping = false;
-           }
-       }
-       
-       // when jump button is released, stop the hold window
-        if (Input.GetButtonUp("Jump"))
-        { 
-            isJumping = false;
-        }
-            
-        // apply additional gravity when falling or when jump was released early
-        if (rb.linearVelocity.y < 0f)
-        { 
-            rb.linearVelocity = new Vector2(
-                rb.linearVelocity.x,
-                rb.linearVelocity.y + Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime
-            );
-        }
-        else if (rb.linearVelocity.y > 0f && !isJumping)
-        { 
-            // released early while moving up -> shorten jump
-            rb.linearVelocity = new Vector2(
-                rb.linearVelocity.x,
-                rb.linearVelocity.y + Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime
-            );
-        }
-        if(input >.1f && !facingRight && !anim.GetBool("attackWhip"))
+        if (isGrounded)
+            lastWallJumpSide = 0;
+
+        // WALL DETECTION (stable box check)
+        Collider2D hitRight = Physics2D.OverlapBox(
+            transform.position + Vector3.right * 0.6f,
+            wallCheckSize,
+            0,
+            wallLayer);
+
+        Collider2D hitLeft = Physics2D.OverlapBox(
+            transform.position + Vector3.left * 0.6f,
+            wallCheckSize,
+            0,
+            wallLayer);
+
+        if (hitRight != null)
+            wallSide = 1;
+        else if (hitLeft != null)
+            wallSide = -1;
+        else
+            wallSide = 0;
+
+        // Coyote time
+        if (isGrounded)
+            coyoteCounter = coyoteTime;
+        else
+            coyoteCounter -= Time.deltaTime;
+
+        // Jump buffer
+        if (Input.GetButtonDown("Jump"))
+            jumpBufferCounter = jumpBufferTime;
+        else
+            jumpBufferCounter -= Time.deltaTime;
+
+        // Wall slide
+        isWallSliding = wallSide != 0 && !isGrounded && rb.linearVelocity.y < 0;
+
+        if (isWallSliding)
         {
-            flip();
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
+        }
+
+        // Jump logic
+        if (jumpBufferCounter > 0)
+        {
+            // Normal jump
+            if (coyoteCounter > 0)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                jumpBufferCounter = 0;
+            }
+            // Celeste wall jump
+            else if (isWallSliding)
+            {
+                isWallJumping = true;
+                wallJumpTimer = wallJumpLockTime;
+
+                float verticalVelocity = wallJumpForceY;
+
+                // Prevent height stacking on same wall
+                if (lastWallJumpSide == wallSide)
+                {
+                    verticalVelocity = Mathf.Min(rb.linearVelocity.y, wallJumpForceY);
+                }
+
+                rb.linearVelocity = new Vector2(-wallSide * wallJumpForceX, verticalVelocity);
+
+                lastWallJumpSide = wallSide;
+                jumpBufferCounter = 0;
+            }
+        }
+
+        // Better gravity
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+        // Flip
+        if (horizontal > 0.1f && !facingRight)
+        {
+            Flip();
             facingRight = true;
         }
-        if(input < -.1f && facingRight && !anim.GetBool("attackWhip"))
+        else if (horizontal < -0.1f && facingRight)
         {
-            flip();
+            Flip();
             facingRight = false;
         }
-        if (input > .1f || input < -.1f)
-        {
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isWalking", false);
-        }
-        
-    }
-    private void flip()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-    }
-    
 
+        if (anim != null)
+            anim.SetBool("isWalking", Mathf.Abs(horizontal) > 0.1f);
+    }
+
+    void FixedUpdate()
+    {
+        // Wall jump lock (prevents instant re-stick)
+        if (isWallJumping)
+        {
+            wallJumpTimer -= Time.fixedDeltaTime;
+            if (wallJumpTimer <= 0)
+                isWallJumping = false;
+            else
+                return;
+        }
+
+        float targetSpeed = horizontal * moveSpeed;
+        float speedDifference = targetSpeed - rb.linearVelocity.x;
+
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f)
+            ? acceleration
+            : deceleration;
+
+        if (!isGrounded)
+            accelRate *= airControlMultiplier;
+
+        float movement = speedDifference * accelRate * Time.fixedDeltaTime;
+
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x + movement, rb.linearVelocity.y);
+    }
+
+    void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
 }
