@@ -61,7 +61,7 @@ public class WeaponController : MonoBehaviour
         if (weapon == WeaponType.Whip)
         {
             whip.endAttacky();
-            anim.SetBool("attackWhip",false);
+            anim.SetBool("attack",false);
             
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
@@ -76,6 +76,6 @@ public class WeaponController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         movementScript.enabled = true;
         anim.SetBool("isStunned", false);
-        anim.SetBool("attackWhip", false);
+        anim.SetBool("attack", false);
     }
 }

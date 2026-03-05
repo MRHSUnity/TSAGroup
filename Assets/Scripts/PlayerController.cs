@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public float wallJumpLockTime = 0.2f;
 
     private bool isGrounded;
+    private bool wasGrounded;
     private bool isWallSliding;
     private bool isWallJumping;
 
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private float jumpBufferCounter;
     private float wallJumpTimer;
 
-    private int wallSide;            // -1 = left wall, 1 = right wall
+    private int wallSide;
     private int lastWallJumpSide = 0;
 
     private bool facingRight = true;
@@ -58,13 +59,19 @@ public class PlayerController : MonoBehaviour
         // Ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        if (isGrounded)
+        // Landing detection
+        if (isGrounded && !wasGrounded)
         {
-            lastWallJumpSide = 0;
-            anim.SetBool("isJumping", false);
+            if (anim != null)
+                anim.SetBool("isJumping", false);
         }
 
-        // WALL DETECTION (stable box check)
+        wasGrounded = isGrounded;
+
+        if (isGrounded)
+            lastWallJumpSide = 0;
+
+        // WALL DETECTION
         Collider2D hitRight = Physics2D.OverlapBox(
             transform.position + Vector3.right * 0.6f,
             wallCheckSize,
@@ -92,9 +99,7 @@ public class PlayerController : MonoBehaviour
 
         // Jump buffer
         if (Input.GetButtonDown("Jump"))
-        {
             jumpBufferCounter = jumpBufferTime;
-        }
         else
             jumpBufferCounter -= Time.deltaTime;
 
@@ -114,9 +119,11 @@ public class PlayerController : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 jumpBufferCounter = 0;
-                anim.SetBool("isJumping", true);
+
+                if (anim != null)
+                    anim.SetBool("isJumping", true);
             }
-            // Celeste wall jump
+            // Wall jump
             else if (isWallSliding)
             {
                 isWallJumping = true;
@@ -124,18 +131,26 @@ public class PlayerController : MonoBehaviour
 
                 float verticalVelocity = wallJumpForceY;
 
-                // Prevent height stacking on same wall
                 if (lastWallJumpSide == wallSide)
                 {
                     verticalVelocity = Mathf.Min(rb.linearVelocity.y, wallJumpForceY);
                 }
 
                 rb.linearVelocity = new Vector2(-wallSide * wallJumpForceX, verticalVelocity);
-                anim.SetBool("isJumping", true);
-                
+
                 lastWallJumpSide = wallSide;
                 jumpBufferCounter = 0;
+
+                if (anim != null)
+                    anim.SetBool("isJumping", true);
             }
+        }
+
+        // If in air and not grounded → jumping true
+        if (!isGrounded && !isWallSliding)
+        {
+            if (anim != null)
+                anim.SetBool("isJumping", true);
         }
 
         // Better gravity
@@ -149,12 +164,12 @@ public class PlayerController : MonoBehaviour
         }
 
         // Flip
-        if (horizontal > 0.1f && !facingRight)
+        if (horizontal > 0.1f && !facingRight && !anim.GetBool("attack"))
         {
             Flip();
             facingRight = true;
         }
-        else if (horizontal < -0.1f && facingRight)
+        else if (horizontal < -0.1f && facingRight && !anim.GetBool("attack"))
         {
             Flip();
             facingRight = false;
@@ -166,7 +181,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Wall jump lock (prevents instant re-stick)
         if (isWallJumping)
         {
             wallJumpTimer -= Time.fixedDeltaTime;

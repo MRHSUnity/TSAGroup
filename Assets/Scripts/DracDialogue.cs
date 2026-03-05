@@ -12,6 +12,7 @@ public class DracDialogue : MonoBehaviour
     public string[] lines;
     public float textSpd;
     private int index;
+    public String scene;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -62,7 +63,7 @@ public class DracDialogue : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("DeathScene");
+            SceneManager.LoadScene(scene);
             gameObject.SetActive(false);
         }
     }

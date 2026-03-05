@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: b407bce67561fe64c95fe510a16f0882
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: ea3f5a01abda6b245b2b9db2fa3dd61b
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 927ea31d4d4d05f44ac53274044660eb
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: d1072e92824316844b5b77bc18ef5a11
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: dfcc00ea6c232724dbd810c2c9bca840
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
