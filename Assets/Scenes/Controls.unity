@@ -478,8 +478,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "C ~ Whip Attack\n\nWASD ~ To Move\n\n\u2191 \u2193 \u2192 \u2190 ~ To
-    Move"
+  m_text: 'Z/Left Mouse ~ Whip Attack
+
+
+    WASD/Arrows ~ To Move
+
+
+    Left Mouse
+    ~ Dialouge'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
@@ -544,7 +550,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -324.7716, w: -293.57092}
+  m_margin: {x: -105.37097, y: 0, z: -394.57996, w: -293.57092}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -763,7 +769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 582.5, y: 287.5}
+  m_AnchoredPosition: {x: 580, y: 287.5}
   m_SizeDelta: {x: 1165, y: 575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1126330464
