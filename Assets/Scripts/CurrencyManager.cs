@@ -34,16 +34,16 @@ public class CurrencyManager : MonoBehaviour
         UpdateUI();
     }
 
-    public bool SpendCurrency(int amount)
+    public void SpendCurrency(int amount)
     {
         if (currentBalance >= amount)
         {
             currentBalance -= amount;
             SaveBalance();
             UpdateUI();
-            return true; // Purchase successful
+            //return true; // Purchase successful
         }
-        return false; // Not enough money
+        //return false; // Not enough money
     }
 
     public int GetBalance()
