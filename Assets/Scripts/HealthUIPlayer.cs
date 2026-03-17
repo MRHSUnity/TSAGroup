@@ -22,6 +22,10 @@ public class HealthUIPlayer : MonoBehaviour
         }
         
     }
+    public void addMaxHealth(int health)
+    {
+        MaxHealth += health;
+    }
     public void healthChange(float healthChange)
     {
         health -= healthChange;

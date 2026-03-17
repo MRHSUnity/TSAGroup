@@ -7,6 +7,7 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager instance; // Singleton instance
     //public Text currencyText; // Reference to UI Text element
     public TextMeshProUGUI currencyText;
+    public GameObject tooBroke;
 
     private int currentBalance;
     private const string BalanceKey = "PlayerBalance"; // Key for PlayerPrefs
@@ -42,6 +43,10 @@ public class CurrencyManager : MonoBehaviour
             SaveBalance();
             UpdateUI();
             //return true; // Purchase successful
+        }
+        else
+        {
+            tooBroke.SetActive(true);
         }
         //return false; // Not enough money
     }
