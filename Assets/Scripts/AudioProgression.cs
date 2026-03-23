@@ -9,12 +9,14 @@ public class AudioProgression : MonoBehaviour
     public AudioResource Atransition;
     public AudioResource Aloop;
     public AudioSource source;
-    public Boolean starting = true;
+    public Boolean starting;
     public Boolean transitioning;
+    public Boolean looping = false;
 
     void Start()
     {
         source.resource = Astart;
+        starting = false;
     }
 
     // Update is called once per frame
@@ -26,6 +28,24 @@ public class AudioProgression : MonoBehaviour
         // once transitioning ends set transitioning to false
         // play Aloop and set to loop 
         // :D
+
+        if (!source.isPlaying && transitioning == false && looping == false)
+        {
+            starting = true;
+        }
+        if (starting)
+        {
+            source.resource = Atransition;
+            transitioning = true;
+            starting = false;
+        }
+        if (!source.isPlaying && transitioning == true)
+        {
+            source.resource = Aloop;
+            transitioning = false;
+            looping = true;
+            source.loop = true;
+        }
 
     }
 }
