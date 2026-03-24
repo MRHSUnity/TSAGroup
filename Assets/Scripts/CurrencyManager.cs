@@ -8,8 +8,8 @@ public class CurrencyManager : MonoBehaviour
     //public Text currencyText; // Reference to UI Text element
     public TextMeshProUGUI currencyText;
     public GameObject tooBroke;
-
-    private int currentBalance;
+    public bool canSpend;
+    public int currentBalance;
     private const string BalanceKey = "PlayerBalance"; // Key for PlayerPrefs
 
     void Awake()
@@ -42,11 +42,13 @@ public class CurrencyManager : MonoBehaviour
             currentBalance -= amount;
             SaveBalance();
             UpdateUI();
+            canSpend = true;
             //return true; // Purchase successful
         }
         else
         {
             tooBroke.SetActive(true);
+            canSpend = false;
         }
         //return false; // Not enough money
     }
@@ -74,5 +76,8 @@ public class CurrencyManager : MonoBehaviour
         {
             currencyText.text = currentBalance.ToString("#,0");
         }
-    }
+        
+        
+    
+}
 }

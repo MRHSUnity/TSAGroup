@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBarUI : MonoBehaviour
 {
     public float Health, MaxHealth, width, height;
+    //public TextMeshProUGUI healthText;
 
     [SerializeField] private RectTransform healthBar;
 
