@@ -1,28 +1,56 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioProgression : MonoBehaviour
 {
     //audio start, audio transition, audio loop
-    public AudioResource Astart;
-    public AudioResource Atransition;
-    public AudioResource Aloop;
+    public AudioClip Astart;
+    public AudioClip Atransition;
+    public AudioClip Aloop;
     public AudioSource source;
-    public Boolean starting = true;
-    public Boolean transitioning = false;
-    public Boolean looping = false;
+    
+
+    // Given a start, transition, and looping audio clips, will play each in order before ending on the final clip and repeating it indefinetaly.
+
 
     void Start()
     {
-        source.resource = Astart;
-        starting = false;
-        transitioning = false;
-        looping = true;
+        source = GetComponent<AudioSource>();
+
+        StartCoroutine(Playmoosic());
+        /* source.clip = Astart;
+         source.loop = false;
+         starting = false;
+         transitioning = false;
+         looping = true;*/
+    }
+
+    IEnumerator Playmoosic()
+    {
+        source.clip = Astart;
+        source.loop = false; // Ensure it does not loop
+        source.Play();
+
+        // 2. Wait until the introductory music finishes playing
+        // yield return new WaitWhile(() => audioSource.isPlaying); // An alternative approach
+        yield return new WaitForSeconds(Astart.length);
+
+        source.clip = Atransition;
+        source.loop = false;
+        source.Play();
+
+        yield return new WaitForSeconds(Atransition.length);
+        // 3. Play the looping music and set it to loop indefinitely
+        source.clip = Aloop;
+        source.loop = true; // Set the loop flag to true
+        source.Play(); // Start playing the second clip
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update() 
     {
         
         // once Astart ends, set starting to true
@@ -38,7 +66,7 @@ public class AudioProgression : MonoBehaviour
         }
         if (starting == true)
         {
-            source.resource = Atransition;
+            source.clip = Atransition;
             transitioning = true;
             starting = false;
             Debug.Log("starting audio recieved");
@@ -47,12 +75,12 @@ public class AudioProgression : MonoBehaviour
         }
         if (!source.isPlaying && transitioning == true)
         {
-            source.resource = Aloop;
+            source.clip = Aloop;
             transitioning = false;
             looping = true;
             source.loop = true;
             source.Play();
         }
 
-    }
+    }*/
 }
