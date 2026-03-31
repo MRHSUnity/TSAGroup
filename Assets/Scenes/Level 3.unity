@@ -24595,7 +24595,7 @@ Transform:
   m_GameObject: {fileID: 356597502}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -128.6251, y: 4.8969893, z: -10}
+  m_LocalPosition: {x: -127.9245, y: 4.89298, z: -10}
   m_LocalScale: {x: 1.8800814, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31248,7 +31248,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 803072487}
-  - component: {fileID: 803072489}
   - component: {fileID: 803072488}
   m_Layer: 5
   m_Name: Dialogue
@@ -31286,28 +31285,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DracDialogue
   textComponent: {fileID: 1016602578}
   lines:
-  - You may have bested me this time
-  - But I will arise again in 100 years!
-  - The next hero won't stop me!
+  - You're here once more...
+  - Fine... atleast your persistent
+  - I'll honor your feeble atempt to slay me
+  - It is time we battle!
   textSpd: 0.1
-  scene: WinScene
---- !u!114 &803072489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803072486}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebd715e4d75d23848a8c83cb32d7758a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  textComponent: {fileID: 1016602578}
-  lines:
-  - Begone foul fiend!
-  - Out of my castle!
-  textSpd: 0.1
+  scene: BossBattle
 --- !u!1 &815014273
 GameObject:
   m_ObjectHideFlags: 0
@@ -73109,7 +73092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87641dc185286d542a00f213a73ce035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChange
-  Scene: 
+  Scene: DeathScene
   player:
     serializedVersion: 2
     m_Bits: 128
@@ -74033,7 +74016,7 @@ PrefabInstance:
     - target: {fileID: 1637837712619067669, guid: d919630ad39d9284cba49cb4e34581fe, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 803072489}
+      objectReference: {fileID: 0}
     - target: {fileID: 1637837712619067669, guid: d919630ad39d9284cba49cb4e34581fe, type: 3}
       propertyPath: m_Enabled
       value: 1
