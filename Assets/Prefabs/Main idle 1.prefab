@@ -207,11 +207,11 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
-  moveSpeed: 8
+  moveSpeed: 7
   acceleration: 60
   deceleration: 80
   airControlMultiplier: 0.7
-  jumpForce: 20
+  jumpForce: 18
   coyoteTime: 0.1
   jumpBufferTime: 0.1
   fallMultiplier: 2.5
