@@ -2770,6 +2770,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1696327380}
+    - target: {fileID: 4138128892753439894, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 1589387829}
+    - target: {fileID: 4138128892753439894, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      propertyPath: CurrencyManager
+      value: 
+      objectReference: {fileID: 954235398}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2912,7 +2920,7 @@ PrefabInstance:
     - target: {fileID: 2260749874860181374, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1861595800}
     - target: {fileID: 2260749874860181374, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: movementScript
       value: 
@@ -2964,7 +2972,7 @@ PrefabInstance:
     - target: {fileID: 7071444044797596998, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: playerAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1861595800}
     - target: {fileID: 8042898211717894195, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: pointA
       value: 
@@ -3975,7 +3983,7 @@ PrefabInstance:
     - target: {fileID: 2260749874860181374, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1861595800}
     - target: {fileID: 2260749874860181374, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: movementScript
       value: 
@@ -4027,7 +4035,7 @@ PrefabInstance:
     - target: {fileID: 7071444044797596998, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: playerAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1861595800}
     - target: {fileID: 8042898211717894195, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: pointA
       value: 
@@ -9628,7 +9636,7 @@ PrefabInstance:
     - target: {fileID: 2260749874860181374, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1861595800}
     - target: {fileID: 2260749874860181374, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: movementScript
       value: 
@@ -9680,7 +9688,7 @@ PrefabInstance:
     - target: {fileID: 7071444044797596998, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: playerAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1861595800}
     - target: {fileID: 8042898211717894195, guid: 12539be9cc17d9a439e9af1799a17d8d, type: 3}
       propertyPath: pointA
       value: 
@@ -9755,8 +9763,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1589387828}
   - {fileID: 1696327379}
+  - {fileID: 1589387828}
   m_Father: {fileID: 330289855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -10018,6 +10026,11 @@ SpriteRenderer:
 --- !u!4 &1861595795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 371204234570490075, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+  m_PrefabInstance: {fileID: 549230546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1861595800 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3833518723654308830, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
   m_PrefabInstance: {fileID: 549230546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1879026515
@@ -10544,7 +10557,7 @@ Transform:
   m_GameObject: {fileID: 2087993139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.7163315, y: -0.94682217, z: -10}
+  m_LocalPosition: {x: -4.7823715, y: -0.94682217, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
