@@ -4,6 +4,7 @@ public class WhipAttackArea : MonoBehaviour
 {
     public int damage = 3;
     public LayerMask enemies;
+    public LayerMask boss;
     private Animator anim;
     
 
@@ -20,6 +21,15 @@ public class WhipAttackArea : MonoBehaviour
                 Debug.Log("Enemy hit for " + damage + " damage.");
                 anim.SetBool("isStunned", true);
               }
+         }
+         if (((1 << collision.gameObject.layer) & boss) != 0)
+         {
+             DracHealth enemyHealth = collision.GetComponent<DracHealth>();
+             if (enemyHealth != null)
+             {
+                 enemyHealth.health -= damage;
+                 Debug.Log("Enemy hit for " + damage + " damage.");
+             }
          }
    }
 }

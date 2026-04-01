@@ -10,7 +10,7 @@ public class SceneChange : MonoBehaviour
  {
 
          // Load the next scene
-         if(player==null)
+         if(player == 0)
         {
             SceneManager.LoadScene(Scene);
 
