@@ -3427,6 +3427,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6069163045935182784, guid: c673f53570ed1414b89230e91bb1048d, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 330236383}
+    - target: {fileID: 6069163045935182784, guid: c673f53570ed1414b89230e91bb1048d, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 110206484}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4842,6 +4850,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6069163045935182784, guid: c673f53570ed1414b89230e91bb1048d, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 330236383}
+    - target: {fileID: 6069163045935182784, guid: c673f53570ed1414b89230e91bb1048d, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 110206484}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15836,6 +15852,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6069163045935182784, guid: c673f53570ed1414b89230e91bb1048d, type: 3}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 330236383}
+    - target: {fileID: 6069163045935182784, guid: c673f53570ed1414b89230e91bb1048d, type: 3}
+      propertyPath: currencyManager
+      value: 
+      objectReference: {fileID: 110206484}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48080,6 +48104,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1643513390}
+    - target: {fileID: 4138128892753439894, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 534009506}
+    - target: {fileID: 4138128892753439894, guid: 1cac76d4b01b87c4fb82f99d83ae1fbd, type: 3}
+      propertyPath: CurrencyManager
+      value: 
+      objectReference: {fileID: 110206482}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
