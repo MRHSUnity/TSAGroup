@@ -1,28 +1,22 @@
 using UnityEngine;
-using System;
-using UnityEngine.UI;
 
 public class TutorialText : MonoBehaviour
 {
-
-    public GameObject currentText;
-    public BoxCollider2D trigger;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject textToHide;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        currentText.SetActive(false);
+        // Check if the object that entered the trigger has the "Player" tag
+        if (other.CompareTag("Player"))
+        {
+            if (textToHide != null)
+            {
+                // Disables the object so it disappears from view
+                textToHide.SetActive(false);
+            }
+        }
     }
-
-
 }
+
+// I hate to tell you but this code is very much straight from google ai <3 
+// gods ai is gross
