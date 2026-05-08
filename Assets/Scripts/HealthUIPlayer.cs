@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class HealthUIPlayer : MonoBehaviour
 {
+    private static int savedMaxHealth = 10;
     public int health, MaxHealth;
     public GameObject CurrencyManager;
     [SerializeField] private HealthBarUI healthBar;
@@ -10,6 +11,8 @@ public class HealthUIPlayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MaxHealth=savedMaxHealth;
+        health = MaxHealth;
         healthBar.setMaxHealth(MaxHealth);
     }
 
@@ -28,6 +31,7 @@ public class HealthUIPlayer : MonoBehaviour
     public void addMaxHealth(int health)
     {
         MaxHealth += health;
+        savedMaxHealth = MaxHealth;
         this.health += health;
     }
     public void shopHealth(int h)

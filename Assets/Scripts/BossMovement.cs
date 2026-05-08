@@ -10,28 +10,35 @@ public class BossMovement2D : MonoBehaviour
     public float roamRadius = 5f;
 
     [Header("Swoop Settings")]
-    public float swoopDuration = 1.5f;
+    public float swoopDuration = 3f;
     public float swoopCurveHeight = 3f;
-    public float timeBetweenSwoops = 6f;
+    public float timeBetweenSwoopChecks = 1f;
+
+    [Header("Return Up Settings")]
+    public float returnUpDuration = 1.5f;
+    public float returnUpHeight = 4f;
 
     [Header("Confiner Settings")]
-    public Vector2 minBounds; // bottom-left corner of arena
-    public Vector2 maxBounds; // top-right corner of arena
+    public Vector2 minBounds;
+    public Vector2 maxBounds;
 
     private Vector2 targetPos;
     private bool swooping = false;
+    private bool returningUp = false;
 
-    // Bezier points
     private Vector2 startPoint;
     private Vector2 controlPoint;
     private Vector2 endPoint;
 
+    private Vector2 returnStartPoint;
+    private Vector2 returnEndPoint;
     private float swoopTimer = 0f;
+    private float returnTimer = 0f;
 
     void Start()
     {
         PickNewPos();
-        InvokeRepeating(nameof(StartSwoop), 3f, timeBetweenSwoops);
+        InvokeRepeating(nameof(TryStartSwoop), 3f, timeBetweenSwoopChecks);
     }
 
     void Update()
@@ -40,12 +47,15 @@ public class BossMovement2D : MonoBehaviour
         {
             HandleSwoop();
         }
+        else if (returningUp)
+        {
+            HandleReturnUp();
+        }
         else
         {
             HandleMovement();
         }
 
-        // Clamp position inside arena
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, minBounds.x, maxBounds.x);
         pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y);
@@ -54,11 +64,7 @@ public class BossMovement2D : MonoBehaviour
 
     void HandleMovement()
     {
-        transform.position = Vector2.Lerp(
-            transform.position,
-            targetPos,
-            moveSpeed * Time.deltaTime
-        );
+        transform.position = Vector2.Lerp(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, targetPos) < 0.5f)
         {
@@ -70,31 +76,36 @@ public class BossMovement2D : MonoBehaviour
     {
         targetPos = Random.insideUnitCircle * roamRadius + (Vector2)transform.position;
 
-        // Make sure target is inside arena
         targetPos.x = Mathf.Clamp(targetPos.x, minBounds.x, maxBounds.x);
         targetPos.y = Mathf.Clamp(targetPos.y, minBounds.y, maxBounds.y);
     }
 
-    void StartSwoop()
+    void TryStartSwoop()
     {
+        if (swooping || returningUp) return;
         if (player == null) return;
 
+        OrbitProjectile2D[] projectiles = FindObjectsByType<OrbitProjectile2D>(FindObjectsSortMode.None);
+
+        if (projectiles.Length > 0) return;
+
+        StartSwoop();
+    }
+
+    void StartSwoop()
+    {
         swooping = true;
         swoopTimer = 0f;
 
         startPoint = transform.position;
-
-        // LOCK player position at start
         endPoint = player.position;
 
-        // Create curved arc
         Vector2 mid = (startPoint + endPoint) / 2f;
         Vector2 direction = (endPoint - startPoint).normalized;
         Vector2 perpendicular = new Vector2(-direction.y, direction.x);
 
         controlPoint = mid + perpendicular * swoopCurveHeight;
 
-        // Clamp controlPoint to arena so swoop stays inside
         controlPoint.x = Mathf.Clamp(controlPoint.x, minBounds.x, maxBounds.x);
         controlPoint.y = Mathf.Clamp(controlPoint.y, minBounds.y, maxBounds.y);
     }
@@ -102,15 +113,10 @@ public class BossMovement2D : MonoBehaviour
     void HandleSwoop()
     {
         swoopTimer += Time.deltaTime;
-        float t = swoopTimer / swoopDuration;
-        t = t * t; // ease-in
 
-        if (t >= 1f)
-        {
-            swooping = false;
-            PickNewPos();
-            return;
-        }
+        float t = swoopTimer / swoopDuration;
+        t = Mathf.Clamp01(t);
+        t = Mathf.SmoothStep(0f, 1f, t);
 
         Vector2 pos =
             Mathf.Pow(1 - t, 2) * startPoint +
@@ -118,5 +124,40 @@ public class BossMovement2D : MonoBehaviour
             Mathf.Pow(t, 2) * endPoint;
 
         transform.position = pos;
+
+        if (t >= 1f)
+        {
+            swooping = false;
+            StartReturnUp();
+        }
+    }
+
+    void StartReturnUp()
+    {
+        returningUp = true;
+        returnTimer = 0f;
+
+        returnStartPoint = transform.position;
+        returnEndPoint = new Vector2(
+            transform.position.x,
+            Mathf.Clamp(transform.position.y + returnUpHeight, minBounds.y, maxBounds.y)
+        );
+    }
+
+    void HandleReturnUp()
+    {
+        returnTimer += Time.deltaTime;
+
+        float t = returnTimer / returnUpDuration;
+        t = Mathf.Clamp01(t);
+        t = Mathf.SmoothStep(0f, 1f, t);
+
+        transform.position = Vector2.Lerp(returnStartPoint, returnEndPoint, t);
+
+        if (t >= 1f)
+        {
+            returningUp = false;
+            PickNewPos();
+        }
     }
 }

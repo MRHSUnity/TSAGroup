@@ -291,12 +291,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 419746662}
-  moveSpeed: 1
-  roamRadius: 10
+  moveSpeed: 1.5
+  roamRadius: 15
   swoopDuration: 1
   swoopCurveHeight: 5
-  timeBetweenSwoops: 20
-  minBounds: {x: -10, y: -3}
+  timeBetweenSwoopChecks: 1
+  returnUpDuration: 1.5
+  returnUpHeight: 4
+  minBounds: {x: -10, y: -1}
   maxBounds: {x: 10, y: 7}
 --- !u!114 &3558900
 MonoBehaviour:
@@ -311,11 +313,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   projectilePrefab: {fileID: 7171975121824162202, guid: c8e600ac1ae45de488d39f0aaab13ce3, type: 3}
-  count: 6
-  radius: 3.5
-  rotationSpeed: 35
+  count: 8
+  radius: 3
+  rotationSpeed: 45
   player: {fileID: 419746662}
-  launchInterval: 4
+  launchInterval: 1.5
   refillDelay: 2
 --- !u!114 &3558901
 MonoBehaviour:

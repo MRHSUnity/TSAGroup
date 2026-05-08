@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WhipAttackArea : MonoBehaviour
 {
-    public int damage = 3;
+    public static int damage = 3;
     public LayerMask enemies;
     public LayerMask boss;
     private Animator anim;
@@ -31,5 +31,9 @@ public class WhipAttackArea : MonoBehaviour
                  Debug.Log("Enemy hit for " + damage + " damage.");
              }
          }
+   }
+   public void IncreaseDamage()
+   {
+       damage += 1;
    }
 }
